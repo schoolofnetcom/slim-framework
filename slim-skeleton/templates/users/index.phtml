@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+            table, form {
+              width: 100%;
+              max-width: 600px;
+              margin: 40px auto;
+            }
+            form input, .btn {
+              display: block;
+              padding: 20px;
+              border-radius: 10px;
+              border: 1px solid #ccc;
+              width: 100%;
+              margin: 10px 0;
+            }
+            form input[type='submit'], .btn {
+              cursor: pointer;
+              color: #fff;
+              background-color: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Slim</h1>
+        <div>a microframework for PHP</div>
+
+        <h2>Bem vindo <?php echo $_SESSION['user']['name']; ?></h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Remover</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($users as $user): ?>
+              <tr>
+                <td><?php echo $user->id;?></td>
+                <td><?php echo $user->name;?></td>
+                <td><a href="/users/<?php echo $user->id;?>" class="btn">remover</a></td>
+              </tr>
+            <?php endforeach;?>
+          </tbody>
+        </table>
+
+        <form class="" action="/users" method="post">
+          <legend>Adicionar novo usuário</legend>
+          <input type="text" name="name" value="" placeholder="Nome do usuário">
+          <input type="email" name="email" value="" placeholder="Email do usuário">
+          <input type="password" name="password" value="" placeholder="Senha do usuário">
+          <input type="submit" value="Salvar">
+        </form>
+    </body>
+</html>
